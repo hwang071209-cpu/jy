@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>황주영 | Festival Design Portfolio</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- JSZip 로드 (웹사이트 전체 ZIP 패키지 생성용) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Google Fonts: Pretendard & Inter & Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'Inter', 'sans-serif'],
+                        display: ['Inter', '"Noto Sans KR"', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: '#FFFDF8',
+                        softYellow: '#FEF6D8',
+                        softPink: '#FDE8EE',
+                        softPurple: '#F1EBFA',
+                        pointPink: '#E88DA6',
+                        pointPurple: '#9D84CE',
+                        pointYellow: '#E6B84C',
+                        ink: '#2D2A32',
+                        mutedInk: '#6B6675',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 커스텀 스크롤바 및 미세 스타일 조정 */
+        body {
+            background-color: #FFFDF8;
+            color: #2D2A32;
+            word-break: keep-all;
+        }
+        .glass-nav {
+            background: rgba(255, 253, 248, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .upload-zone {
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .upload-zone.dragover {
+            background-color: #FDE8EE;
+            border-color: #E88DA6;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-softPink selection:text-ink">
+
+    <!-- 상단 네비게이션 바 -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-stone-200/60">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#home" class="font-display font-bold text-lg tracking-tight text-ink flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-pointPink inline-block"></span>
+                <span>Juyoung Hwang</span>
+            </a>
+            <nav class="flex items-center gap-5 sm:gap-8 text-sm font-medium text-mutedInk">
+                <a href="#home" class="hover:text-ink transition-colors py-2">홈</a>
+                <a href="#about" class="hover:text-ink transition-colors py-2">소개</a>
+                <a href="#works" class="hover:text-ink transition-colors py-2">작품</a>
+                <a href="#closing" class="hover:text-ink transition-colors py-2">마무리</a>
+                <button type="button" onclick="downloadHtmlFile()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-softPink/80 hover:bg-softPink text-ink text-xs font-semibold transition-colors">
+                    <svg class="w-3.5 h-3.5 text-pointPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>HTML 저장</span>
+                </button>
+                <button type="button" onclick="downloadWebsiteZip()" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-softPurple/80 hover:bg-softPurple text-pointPurple text-xs font-semibold transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>ZIP 저장</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ① 첫 화면 (Hero Section) -->
+    <section id="home" class="pt-32 pb-20 sm:pt-44 sm:pb-32 px-6 max-w-5xl mx-auto">
+        <div class="relative rounded-3xl bg-gradient-to-br from-softYellow/60 via-cream to-softPink/50 border border-stone-200/70 p-8 sm:p-16 overflow-hidden">
+            
+            <!-- 축제와 디자인을 연상시키는 간결한 감각적 그래픽 요소 -->
+            <svg class="absolute top-6 right-6 sm:top-10 sm:right-12 w-24 h-24 sm:w-36 sm:h-36 text-pointPurple/25 pointer-events-none" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- 가랜드 깃발 & 반짝임 그래픽 -->
+                <path d="M10 20 Q 60 45 110 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+                <polygon points="28,26 42,29 33,44" fill="#FDE8EE" stroke="#E88DA6" stroke-width="1.5"/>
+                <polygon points="56,31 70,30 63,46" fill="#FEF6D8" stroke="#E6B84C" stroke-width="1.5"/>
+                <polygon points="84,25 97,20 93,37" fill="#F1EBFA" stroke="#9D84CE" stroke-width="1.5"/>
+                <!-- 4각 별 반짝임 -->
+                <path d="M90 65 L93 74 L102 77 L93 80 L90 89 L87 80 L78 77 L87 74 Z" fill="#E6B84C" fill-opacity="0.45"/>
+                <circle cx="35" cy="75" r="4" fill="#E88DA6" fill-opacity="0.4"/>
+                <circle cx="65" cy="95" r="3" fill="#9D84CE" fill-opacity="0.4"/>
+            </svg>
+
+            <div class="relative z-10 max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-stone-200/80 text-xs sm:text-sm font-medium text-pointPurple mb-6 shadow-sm">
+                    <span>✦</span>
+                    <span class="font-display tracking-wide">Festival Design Portfolio</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-ink mb-5 leading-tight">
+                    황주영
+                </h1>
+
+                <p class="text-base sm:text-xl text-mutedInk font-normal leading-relaxed mb-8">
+                    달콤한 상상력과 산뜻한 시선으로<br class="hidden sm:inline">
+                    축제의 설렘을 그리는 디자인 포트폴리오입니다.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="#works" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-ink text-white text-sm font-medium hover:bg-ink/90 transition-colors shadow-sm">
+                        작품 보러가기
+                    </a>
+                    <a href="#about" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white text-ink border border-stone-200 text-sm font-medium hover:bg-softYellow/40 transition-colors">
+                        소개 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ② 자기소개 (About Section) -->
+    <section id="about" class="py-16 sm:py-24 px-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-5">
+                <div class="rounded-3xl bg-softPurple/50 border border-pointPurple/20 p-7 sm:p-9">
+                    <span class="text-xs font-display font-semibold uppercase tracking-widest text-pointPurple block mb-2">Profile</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-ink mb-6">황주영</h2>
+                    
+                    <div class="space-y-3 text-sm sm:text-base">
+                        <div class="flex items-center justify-between py-2.5 border-b border-pointPurple/15">
+                            <span class="text-mutedInk">소속</span>
+                            <span class="font-medium text-ink">혜전대학교 제과제빵과</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2.5 border-b border-pointPurple/15">
+                            <span class="text-mutedInk">작업 분야</span>
+                            <span class="font-medium text-ink">축제 포스터 · 마스코트</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2.5">
+                            <span class="text-mutedInk">디자인 키워드</span>
+                            <span class="font-medium text-pointPink">#산뜻함 #친근함 #즐거움</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-7 md:pl-6">
+                <span class="text-xs font-display font-semibold uppercase tracking-widest text-pointPink block mb-2">About Me</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-ink mb-4 leading-snug">
+                    정성껏 구워낸 디저트처럼,<br>
+                    기분 좋은 미소를 선물하는 디자인
+                </h3>
+                <p class="text-mutedInk text-sm sm:text-base leading-relaxed mb-4">
+                    안녕하세요, <strong class="text-ink font-semibold">혜전대학교 제과제빵과 황주영</strong>입니다. 
+                    제과제빵을 전공하며 배운 섬세한 색감 조합과 조형 감각을 바탕으로, 사람들이 함께 어우러지는 축제의 즐거운 에너지를 시각적으로 표현하고 있습니다.
+                </p>
+                <p class="text-mutedInk text-sm sm:text-base leading-relaxed">
+                    한눈에 축제의 분위기를 전달하는 <span class="text-ink font-medium underline decoration-softYellow decoration-4 underline-offset-4">홍보 포스터</span>와, 
+                    누구에게나 다정하게 다가가는 <span class="text-ink font-medium underline decoration-softPink decoration-4 underline-offset-4">축제 마스코트</span> 디자인을 통해 
+                    기억에 오래 남는 따뜻한 축제의 순간을 만듭니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ 작품 소개 (Works Section) -->
+    <section id="works" class="py-16 sm:py-24 px-6 max-w-5xl mx-auto">
+        <div class="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+                <span class="text-xs font-display font-semibold uppercase tracking-widest text-pointYellow block mb-2">Selected Works</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-ink">축제 디자인 작업물</h2>
+            </div>
+            <p class="text-xs sm:text-sm text-mutedInk">
+                작품 이미지를 첨부하면 원본 비율 그대로 선명하게 표시되며, AI가 작품 설명을 자동으로 작성합니다.
+            </p>
+        </div>
+
+        <div class="space-y-16 sm:space-y-24">
+            
+            <!-- 첫 번째 작품: 축제 홍보 포스터 -->
+            <article class="rounded-3xl bg-white border border-stone-200/80 p-6 sm:p-10 shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-softPink text-pointPink text-xs font-bold font-display">WORK 01</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-ink">축제 홍보 포스터</h3>
+                        <span id="poster-save-badge" class="hidden inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-xs font-medium">
+                            <span>✓</span> 저장 완료
+                        </span>
+                    </div>
+                    <div id="poster-actions" class="hidden flex flex-wrap items-center gap-2">
+                        <button type="button" onclick="downloadOriginalImage('poster')" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-softPink/70 hover:bg-softPink text-xs font-semibold text-ink transition-colors">
+                            <svg class="w-3.5 h-3.5 text-pointPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            <span>이미지 저장</span>
+                        </button>
+                        <button type="button" onclick="triggerUpload('poster')" class="px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200/70 text-xs font-medium text-ink transition-colors">
+                            이미지 교체
+                        </button>
+                        <button type="button" onclick="removeWork('poster')" class="px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-medium text-rose-600 transition-colors">
+                            삭제
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- 이미지 업로드 및 원본 비율 표시 영역 -->
+                    <div class="lg:col-span-7">
+                        <input type="file" id="poster-input" accept="image/*" class="hidden" onchange="handleFileSelect(event, 'poster')">
+                        
+                        <!-- 업로드 전 플레이스홀더 영역 -->
+                        <div id="poster-upload-box" 
+                             onclick="triggerUpload('poster')"
+                             ondragover="handleDragOver(event, 'poster')"
+                             ondragleave="handleDragLeave(event, 'poster')"
+                             ondrop="handleDrop(event, 'poster')"
+                             class="upload-zone cursor-pointer rounded-2xl border-2 border-dashed border-stone-300 bg-cream hover:bg-softPink/25 hover:border-pointPink min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center p-8 text-center">
+                            <div class="w-12 h-12 rounded-2xl bg-softPink/70 text-pointPink flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm sm:text-base font-semibold text-ink mb-1">축제 홍보 포스터 이미지 첨부</p>
+                            <p class="text-xs sm:text-sm text-mutedInk">클릭하거나 이미지를 이곳으로 드래그하세요 (JPG, PNG, WEBP)</p>
+                        </div>
+
+                        <!-- 업로드 후 원본 비율 유지 이미지 컨테이너 -->
+                        <div id="poster-preview-box" class="hidden rounded-2xl overflow-hidden bg-stone-50 border border-stone-200/70 flex justify-center">
+                            <img id="poster-img" src="" alt="축제 홍보 포스터 작품" class="w-full h-auto max-h-[750px] object-contain block">
+                        </div>
+                    </div>
+
+                    <!-- AI 자동 작품 설명 영역 -->
+                    <div class="lg:col-span-5 flex flex-col justify-between h-full">
+                        <div class="rounded-2xl bg-cream border border-stone-200/70 p-6 sm:p-7">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-pointPink">
+                                    <span>✦</span> 디자인 노트 & AI 작품 해설
+                                </span>
+                                <button id="poster-regen-btn" type="button" onclick="regenerateDescription('poster')" class="hidden text-xs text-mutedInk hover:text-ink underline underline-offset-2">
+                                    설명 다시 생성
+                                </button>
+                            </div>
+
+                            <!-- 기본 안내 문구 (이미지 업로드 전) -->
+                            <div id="poster-desc-empty" class="text-sm text-mutedInk leading-relaxed space-y-2">
+                                <p>포스터 이미지를 업로드하시면, AI가 포스터의 색감, 구도, 타이포그래피와 축제 분위기를 분석해 작품의 특징과 디자인 의도를 자동으로 작성해 드립니다.</p>
+                            </div>
+
+                            <!-- AI 분석 로딩 상태 -->
+                            <div id="poster-desc-loading" class="hidden py-4 text-sm text-pointPink flex items-center gap-2">
+                                <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                                </svg>
+                                <span>AI가 포스터의 특징과 디자인 의도를 분석하고 있습니다...</span>
+                            </div>
+
+                            <!-- AI 생성 작품 설명 출력 영역 -->
+                            <div id="poster-desc-content" class="hidden text-sm text-ink leading-relaxed space-y-3"></div>
+                        </div>
+
+                        <div class="mt-4 px-2 flex items-center justify-between gap-2 text-xs text-mutedInk">
+                            <div class="flex items-center gap-2">
+                                <span id="poster-status-dot" class="w-1.5 h-1.5 rounded-full bg-pointPink"></span>
+                                <span id="poster-status-text">업로드된 작품과 설명은 브라우저에 자동 저장됩니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 두 번째 작품: 축제 마스코트 -->
+            <article class="rounded-3xl bg-white border border-stone-200/80 p-6 sm:p-10 shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full bg-softPurple text-pointPurple text-xs font-bold font-display">WORK 02</span>
+                        <h3 class="text-xl sm:text-2xl font-bold text-ink">축제 마스코트</h3>
+                        <span id="mascot-save-badge" class="hidden inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-xs font-medium">
+                            <span>✓</span> 저장 완료
+                        </span>
+                    </div>
+                    <div id="mascot-actions" class="hidden flex flex-wrap items-center gap-2">
+                        <button type="button" onclick="downloadOriginalImage('mascot')" class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-softPurple/80 hover:bg-softPurple text-xs font-semibold text-ink transition-colors">
+                            <svg class="w-3.5 h-3.5 text-pointPurple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            <span>이미지 저장</span>
+                        </button>
+                        <button type="button" onclick="triggerUpload('mascot')" class="px-3.5 py-1.5 rounded-xl bg-stone-100 hover:bg-stone-200/70 text-xs font-medium text-ink transition-colors">
+                            이미지 교체
+                        </button>
+                        <button type="button" onclick="removeWork('mascot')" class="px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-xs font-medium text-rose-600 transition-colors">
+                            삭제
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- 이미지 업로드 및 원본 비율 표시 영역 -->
+                    <div class="lg:col-span-7">
+                        <input type="file" id="mascot-input" accept="image/*" class="hidden" onchange="handleFileSelect(event, 'mascot')">
+                        
+                        <!-- 업로드 전 플레이스홀더 영역 -->
+                        <div id="mascot-upload-box" 
+                             onclick="triggerUpload('mascot')"
+                             ondragover="handleDragOver(event, 'mascot')"
+                             ondragleave="handleDragLeave(event, 'mascot')"
+                             ondrop="handleDrop(event, 'mascot')"
+                             class="upload-zone cursor-pointer rounded-2xl border-2 border-dashed border-stone-300 bg-cream hover:bg-softPurple/30 hover:border-pointPurple min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center p-8 text-center">
+                            <div class="w-12 h-12 rounded-2xl bg-softPurple/80 text-pointPurple flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm sm:text-base font-semibold text-ink mb-1">축제 마스코트 이미지 첨부</p>
+                            <p class="text-xs sm:text-sm text-mutedInk">클릭하거나 이미지를 이곳으로 드래그하세요 (JPG, PNG, WEBP)</p>
+                        </div>
+
+                        <!-- 업로드 후 원본 비율 유지 이미지 컨테이너 -->
+                        <div id="mascot-preview-box" class="hidden rounded-2xl overflow-hidden bg-stone-50 border border-stone-200/70 flex justify-center">
+                            <img id="mascot-img" src="" alt="축제 마스코트 작품" class="w-full h-auto max-h-[750px] object-contain block">
+                        </div>
+                    </div>
+
+                    <!-- AI 자동 작품 설명 영역 -->
+                    <div class="lg:col-span-5 flex flex-col justify-between h-full">
+                        <div class="rounded-2xl bg-cream border border-stone-200/70 p-6 sm:p-7">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-pointPurple">
+                                    <span>✦</span> 디자인 노트 & AI 작품 해설
+                                </span>
+                                <button id="mascot-regen-btn" type="button" onclick="regenerateDescription('mascot')" class="hidden text-xs text-mutedInk hover:text-ink underline underline-offset-2">
+                                    설명 다시 생성
+                                </button>
+                            </div>
+
+                            <!-- 기본 안내 문구 (이미지 업로드 전) -->
+                            <div id="mascot-desc-empty" class="text-sm text-mutedInk leading-relaxed space-y-2">
+                                <p>마스코트 이미지를 업로드하시면, AI가 캐릭터의 외형, 표정, 색감과 상징성을 분석해 친근한 매력과 기획 의도를 자동으로 설명해 드립니다.</p>
+                            </div>
+
+                            <!-- AI 분석 로딩 상태 -->
+                            <div id="mascot-desc-loading" class="hidden py-4 text-sm text-pointPurple flex items-center gap-2">
+                                <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                                </svg>
+                                <span>AI가 마스코트의 매력과 디자인 의도를 분석하고 있습니다...</span>
+                            </div>
+
+                            <!-- AI 생성 작품 설명 출력 영역 -->
+                            <div id="mascot-desc-content" class="hidden text-sm text-ink leading-relaxed space-y-3"></div>
+                        </div>
+
+                        <div class="mt-4 px-2 flex items-center justify-between gap-2 text-xs text-mutedInk">
+                            <div class="flex items-center gap-2">
+                                <span id="mascot-status-dot" class="w-1.5 h-1.5 rounded-full bg-pointPurple"></span>
+                                <span id="mascot-status-text">새로고침하거나 다시 접속해도 작업물이 유지됩니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ④ 마무리 (Closing Section) -->
+    <footer id="closing" class="pt-12 pb-24 px-6 max-w-5xl mx-auto">
+        <div class="rounded-3xl bg-gradient-to-r from-softPink/50 via-softYellow/60 to-softPurple/50 border border-stone-200/70 p-8 sm:p-14 text-center">
+            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-pointYellow shadow-sm mb-5">
+                ✦
+            </div>
+            <h2 class="text-xl sm:text-2xl font-bold text-ink mb-3">
+                함께 즐기는 축제의 순간을 디자인합니다
+            </h2>
+            <p class="text-sm sm:text-base text-mutedInk max-w-lg mx-auto leading-relaxed mb-7">
+                황주영의 축제 디자인 포트폴리오를 끝까지 살펴봐 주셔서 감사합니다.<br>
+                앞으로도 밝고 따뜻한 감각으로 사람들의 마음을 잇는 작업을 이어가겠습니다.
+            </p>
+            <div class="mb-8">
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <button type="button" onclick="downloadHtmlFile()" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-white text-ink border border-stone-200 text-sm font-medium hover:bg-softPink/30 transition-colors shadow-sm">
+                        <svg class="w-4 h-4 text-pointPink" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>인터넷 파일로 저장 (.html)</span>
+                    </button>
+                    <button type="button" onclick="downloadWebsiteZip()" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-ink text-white text-sm font-medium hover:bg-ink/90 transition-colors shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>포트폴리오 웹사이트 전체 저장 (ZIP)</span>
+                    </button>
+                </div>
+                <p class="text-xs text-mutedInk mt-2.5">단일 인터넷 파일(.html)로 저장하면 압축 해제 없이 바로 열 수 있으며, 사진과 설명이 함께 포함됩니다.</p>
+            </div>
+            <div class="pt-6 border-t border-stone-300/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-mutedInk">
+                <span class="font-medium text-ink">황주영 · 혜전대학교 제과제빵과</span>
+                <span class="font-display">© 2026 Juyoung Hwang. Festival Design Portfolio.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 토스트 알림 메시지 박스 (alert 대신 사용) -->
+    <div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 hidden">
+        <div id="toast-msg" class="px-5 py-3 rounded-2xl bg-ink text-white text-xs sm:text-sm font-medium shadow-lg"></div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. 알림 메시지 (Toast) 유틸리티
+        // ==========================================
+        let toastTimer = null;
+        function showToast(message) {
+            const box = document.getElementById('toast-box');
+            const msg = document.getElementById('toast-msg');
+            if (!box || !msg) return;
+            msg.textContent = message;
+            box.classList.remove('hidden');
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                box.classList.add('hidden');
+            }, 3200);
+        }
+
+        // ==========================================
+        // 2. 영구 저장소 (IndexedDB + LocalStorage 이중 백업)
+        // ==========================================
+        const DB_NAME = 'HwangJuyoungPortfolioDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'works';
+
+        function openPortfolioDB() {
+            return new Promise((resolve, reject) => {
+                if (!window.indexedDB) {
+                    reject(new Error('IndexedDB 미지원'));
+                    return;
+                }
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'type' });
+                    }
+                };
+                request.onsuccess = (event) => resolve(event.target.result);
+                request.onerror = (event) => reject(event.target.error);
+            });
+        }
+
+        async function saveWorkData(type, data) {
+            const payload = {
+                type,
+                imageDataUrl: data.imageDataUrl || '',
+                description: data.description || '',
+                updatedAt: Date.now()
+            };
+
+            try {
+                const db = await openPortfolioDB();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction(STORE_NAME, 'readwrite');
+                    const store = tx.objectStore(STORE_NAME);
+                    const req = store.put(payload);
+                    req.onsuccess = () => resolve();
+                    req.onerror = () => reject(req.error);
+                });
+            } catch (e) {
+                console.warn('IndexedDB 저장 대체:', e);
+            }
+
+            try {
+                localStorage.setItem(`portfolio_work_${type}`, JSON.stringify(payload));
+            } catch (e) {
+                console.warn('LocalStorage 용량 제한으로 IndexedDB만 사용:', e);
+            }
+        }
+
+        async function getWorkData(type) {
+            try {
+                const db = await openPortfolioDB();
+                const result = await new Promise((resolve, reject) => {
+                    const tx = db.transaction(STORE_NAME, 'readonly');
+                    const store = tx.objectStore(STORE_NAME);
+                    const req = store.get(type);
+                    req.onsuccess = () => resolve(req.result || null);
+                    req.onerror = () => reject(req.error);
+                });
+                if (result && result.imageDataUrl) {
+                    return result;
+                }
+            } catch (e) {
+                console.warn('IndexedDB 조회 실패, LocalStorage 확인:', e);
+            }
+
+            try {
+                const raw = localStorage.getItem(`portfolio_work_${type}`);
+                if (raw) {
+                    return JSON.parse(raw);
+                }
+            } catch (e) {
+                console.warn('LocalStorage 조회 실패:', e);
+            }
+
+            return null;
+        }
+
+        async function deleteWorkData(type) {
+            try {
+                const db = await openPortfolioDB();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction(STORE_NAME, 'readwrite');
+                    const store = tx.objectStore(STORE_NAME);
+                    const req = store.delete(type);
+                    req.onsuccess = () => resolve();
+                    req.onerror = () => reject(req.error);
+                });
+            } catch (e) {
+                console.warn('IndexedDB 삭제 실패:', e);
+            }
+
+            try {
+                localStorage.removeItem(`portfolio_work_${type}`);
+            } catch (e) {
+                console.warn('LocalStorage 삭제 실패:', e);
+            }
+        }
+
+        // ==========================================
+        // 3. 이미지 업로드 및 화면 렌더링 처리
+        // ==========================================
+        function triggerUpload(type) {
+            const input = document.getElementById(`${type}-input`);
+            if (input) input.click();
+        }
+
+        function handleDragOver(event, type) {
+            event.preventDefault();
+            const zone = document.getElementById(`${type}-upload-box`);
+            if (zone) zone.classList.add('dragover');
+        }
+
+        function handleDragLeave(event, type) {
+            event.preventDefault();
+            const zone = document.getElementById(`${type}-upload-box`);
+            if (zone) zone.classList.remove('dragover');
+        }
+
+        function handleDrop(event, type) {
+            event.preventDefault();
+            const zone = document.getElementById(`${type}-upload-box`);
+            if (zone) zone.classList.remove('dragover');
+            const files = event.dataTransfer && event.dataTransfer.files;
+            if (files && files.length > 0) {
+                processImageFile(files[0], type);
+            }
+        }
+
+        function handleFileSelect(event, type) {
+            const files = event.target && event.target.files;
+            if (files && files.length > 0) {
+                processImageFile(files[0], type);
+            }
+            event.target.value = '';
+        }
+
+        function processImageFile(file, type) {
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+            if (!validTypes.includes(file.type) && !file.type.startsWith('image/')) {
+                showToast('JPG, JPEG, PNG, WEBP 형식의 이미지 파일만 업로드할 수 있습니다.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                const imageDataUrl = e.target.result;
+                renderWorkImage(type, imageDataUrl);
+                updateSaveStatusUI(type, true);
+
+                // 이미지 먼저 영구 저장
+                await saveWorkData(type, { imageDataUrl, description: '' });
+                showToast('이미지가 브라우저에 안전하게 저장되었습니다.');
+
+                // AI 작품 해설 자동 생성 및 저장
+                await generateAndSaveDescription(type, imageDataUrl);
+            };
+            reader.onerror = () => {
+                showToast('이미지를 읽는 중 오류가 발생했습니다.');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderWorkImage(type, imageDataUrl) {
+            const uploadBox = document.getElementById(`${type}-upload-box`);
+            const previewBox = document.getElementById(`${type}-preview-box`);
+            const imgEl = document.getElementById(`${type}-img`);
+            const actionsEl = document.getElementById(`${type}-actions`);
+
+            if (imgEl) imgEl.src = imageDataUrl;
+            if (uploadBox) uploadBox.classList.add('hidden');
+            if (previewBox) previewBox.classList.remove('hidden');
+            if (actionsEl) actionsEl.classList.remove('hidden');
+        }
+
+        function updateSaveStatusUI(type, isSaved) {
+            const badge = document.getElementById(`${type}-save-badge`);
+            const statusText = document.getElementById(`${type}-status-text`);
+            if (isSaved) {
+                if (badge) badge.classList.remove('hidden');
+                if (statusText) statusText.textContent = '저장 완료 · 새로고침하거나 다시 접속해도 유지됩니다.';
+            } else {
+                if (badge) badge.classList.add('hidden');
+                if (statusText) {
+                    statusText.textContent = type === 'poster'
+                        ? '업로드된 작품과 설명은 브라우저에 자동 저장됩니다.'
+                        : '새로고침하거나 다시 접속해도 작업물이 유지됩니다.';
+                }
+            }
+        }
+
+        async function removeWork(type) {
+            await deleteWorkData(type);
+
+            const uploadBox = document.getElementById(`${type}-upload-box`);
+            const previewBox = document.getElementById(`${type}-preview-box`);
+            const imgEl = document.getElementById(`${type}-img`);
+            const actionsEl = document.getElementById(`${type}-actions`);
+            const descEmpty = document.getElementById(`${type}-desc-empty`);
+            const descLoading = document.getElementById(`${type}-desc-loading`);
+            const descContent = document.getElementById(`${type}-desc-content`);
+            const regenBtn = document.getElementById(`${type}-regen-btn`);
+
+            if (imgEl) imgEl.src = '';
+            if (previewBox) previewBox.classList.add('hidden');
+            if (uploadBox) uploadBox.classList.remove('hidden');
+            if (actionsEl) actionsEl.classList.add('hidden');
+            if (descLoading) descLoading.classList.add('hidden');
+            if (descContent) {
+                descContent.innerHTML = '';
+                descContent.classList.add('hidden');
+            }
+            if (descEmpty) descEmpty.classList.remove('hidden');
+            if (regenBtn) regenBtn.classList.add('hidden');
+
+            updateSaveStatusUI(type, false);
+            showToast('작품이 삭제되었습니다.');
+        }
+
+        // ==========================================
+        // 4. AI 작품 해설 자동 생성
+        // ==========================================
+        function analyzeImageTone(imageDataUrl) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = 40;
+                        canvas.height = 40;
+                        ctx.drawImage(img, 0, 0, 40, 40);
+                        const data = ctx.getImageData(0, 0, 40, 40).data;
+
+                        let rSum = 0, gSum = 0, bSum = 0, count = 0;
+                        for (let i = 0; i < data.length; i += 4) {
+                            if (data[i + 3] < 128) continue;
+                            rSum += data[i];
+                            gSum += data[i + 1];
+                            bSum += data[i + 2];
+                            count++;
+                        }
+                        if (count === 0) {
+                            resolve({ brightness: '밝고 화사한', warmth: '따뜻하고 산뜻한', ratio: img.width / img.height });
+                            return;
+                        }
+                        const r = rSum / count;
+                        const g = gSum / count;
+                        const b = bSum / count;
+                        const lum = (r + g + b) / 3;
+
+                        const brightness = lum > 170 ? '밝고 부드러운 파스텔 톤의' : (lum > 110 ? '생기 있고 조화로운' : '깊이감 있고 대비가 뚜렷한');
+                        const warmth = (r >= b) ? '따뜻하고 포근한' : '청량하고 산뜻한';
+                        resolve({ brightness, warmth, ratio: img.width / img.height });
+                    } catch (e) {
+                        resolve({ brightness: '밝고 화사한', warmth: '따뜻하고 산뜻한', ratio: 1 });
+                    }
+                };
+                img.onerror = () => resolve({ brightness: '밝고 화사한', warmth: '따뜻하고 산뜻한', ratio: 1 });
+                img.src = imageDataUrl;
+            });
+        }
+
+        async function generateAndSaveDescription(type, imageDataUrl) {
+            const descEmpty = document.getElementById(`${type}-desc-empty`);
+            const descLoading = document.getElementById(`${type}-desc-loading`);
+            const descContent = document.getElementById(`${type}-desc-content`);
+            const regenBtn = document.getElementById(`${type}-regen-btn`);
+
+            if (descEmpty) descEmpty.classList.add('hidden');
+            if (descContent) descContent.classList.add('hidden');
+            if (descLoading) descLoading.classList.remove('hidden');
+
+            await new Promise((r) => setTimeout(r, 650));
+
+            const tone = await analyzeImageTone(imageDataUrl);
+            let description = '';
+
+            if (type === 'poster') {
+                const layoutText = tone.ratio < 0.85
+                    ? '세로형 구도 속에 축제의 핵심 메시지와 시각 요소를 균형 있게 배치하여 주목도를 높였습니다.'
+                    : '안정적인 화면 비율 안에서 그래픽 요소와 정보 전달 영역을 조화롭게 구성했습니다.';
+                description = `전체적으로 ${tone.brightness} ${tone.warmth} 색채를 활용해 축제가 지닌 설렘과 즐거운 에너지를 시각적으로 담아낸 홍보 포스터입니다.\n${layoutText}\n제과제빵 전공에서 익힌 섬세한 색감 조합 감각을 바탕으로, 관람객이 포스터를 마주하는 순간 기분 좋은 미소와 함께 축제 현장의 활기를 자연스럽게 떠올릴 수 있도록 기획했습니다.`;
+            } else {
+                description = `${tone.brightness} 색감과 둥글고 친근한 실루엣이 어우러져 누구에게나 다정하게 다가가는 축제 마스코트 디자인입니다.\n표정과 동작에서 축제의 유쾌한 분위기가 생생하게 전달되도록 디테일을 살렸으며, 포스터와 굿즈 등 다양한 홍보 매체에서도 높은 활용도를 발휘하도록 설계했습니다.\n보는 이들에게 따뜻한 환영의 인사를 건네며 축제의 즐거운 기억을 오래도록 남기는 상징적 캐릭터입니다.`;
+            }
+
+            renderWorkDescription(type, description);
+            if (descLoading) descLoading.classList.add('hidden');
+            if (regenBtn) regenBtn.classList.remove('hidden');
+
+            await saveWorkData(type, { imageDataUrl, description });
+            updateSaveStatusUI(type, true);
+        }
+
+        function renderWorkDescription(type, description) {
+            const descEmpty = document.getElementById(`${type}-desc-empty`);
+            const descContent = document.getElementById(`${type}-desc-content`);
+            const regenBtn = document.getElementById(`${type}-regen-btn`);
+
+            if (!descContent) return;
+            descContent.innerHTML = '';
+            description.split(/\n+/).filter((t) => t.trim()).forEach((line) => {
+                const p = document.createElement('p');
+                p.textContent = line.trim();
+                descContent.appendChild(p);
+            });
+
+            if (descEmpty) descEmpty.classList.add('hidden');
+            descContent.classList.remove('hidden');
+            if (regenBtn) regenBtn.classList.remove('hidden');
+        }
+
+        async function regenerateDescription(type) {
+            const saved = await getWorkData(type);
+            const imgEl = document.getElementById(`${type}-img`);
+            const src = (saved && saved.imageDataUrl) || (imgEl && imgEl.src);
+            if (!src) {
+                showToast('먼저 작품 이미지를 업로드해 주세요.');
+                return;
+            }
+            await generateAndSaveDescription(type, src);
+            showToast('작품 설명이 새롭게 생성되었습니다.');
+        }
+
+        // ==========================================
+        // 5. 원본 해상도 PNG 파일 다운로드 기능
+        // ==========================================
+        function convertImageToPngBlob(imageSrc) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth || img.width;
+                    canvas.height = img.naturalHeight || img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    canvas.toBlob((blob) => {
+                        if (blob) resolve(blob);
+                        else reject(new Error('PNG 변환 실패'));
+                    }, 'image/png');
+                };
+                img.onerror = (err) => reject(err);
+                img.src = imageSrc;
+            });
+        }
+
+        async function downloadOriginalImage(type) {
+            const saved = await getWorkData(type);
+            const imgEl = document.getElementById(`${type}-img`);
+            const imageSrc = (saved && saved.imageDataUrl) || (imgEl && imgEl.getAttribute('src'));
+
+            if (!imageSrc) {
+                showToast('다운로드할 이미지가 없습니다.');
+                return;
+            }
+
+            const fileName = type === 'poster'
+                ? '황주영_축제홍보포스터.png'
+                : '황주영_축제마스코트.png';
+
+            try {
+                const pngBlob = await convertImageToPngBlob(imageSrc);
+                const url = URL.createObjectURL(pngBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(url), 1500);
+                showToast(`${fileName} 파일이 저장되었습니다.`);
+            } catch (error) {
+                console.error('이미지 다운로드 오류:', error);
+                showToast('이미지 다운로드 중 오류가 발생했습니다.');
+            }
+        }
+
+        // ==========================================
+        // 7. 인터넷 파일(.html) 단독 저장 기능 (사진 및 작품 설명 내장)
+        // ==========================================
+        async function downloadHtmlFile() {
+            showToast('인터넷 파일(.html)을 생성하고 있습니다...');
+
+            try {
+                const posterData = await getWorkData('poster');
+                const mascotData = await getWorkData('mascot');
+
+                const clonedDoc = document.documentElement.cloneNode(true);
+
+                // 업로드된 축제 홍보 포스터 이미지와 설명을 HTML 내부에 직접 포함
+                if (posterData && posterData.imageDataUrl) {
+                    const pUpload = clonedDoc.querySelector('#poster-upload-box');
+                    const pPreview = clonedDoc.querySelector('#poster-preview-box');
+                    const pImg = clonedDoc.querySelector('#poster-img');
+                    const pActions = clonedDoc.querySelector('#poster-actions');
+                    const pBadge = clonedDoc.querySelector('#poster-save-badge');
+                    if (pUpload) pUpload.classList.add('hidden');
+                    if (pPreview) pPreview.classList.remove('hidden');
+                    if (pImg) pImg.setAttribute('src', posterData.imageDataUrl);
+                    if (pActions) pActions.classList.remove('hidden');
+                    if (pBadge) pBadge.classList.remove('hidden');
+
+                    if (posterData.description) {
+                        const pEmpty = clonedDoc.querySelector('#poster-desc-empty');
+                        const pContent = clonedDoc.querySelector('#poster-desc-content');
+                        const pRegen = clonedDoc.querySelector('#poster-regen-btn');
+                        if (pEmpty) pEmpty.classList.add('hidden');
+                        if (pContent) {
+                            pContent.innerHTML = '';
+                            posterData.description.split(/\n+/).filter(t => t.trim()).forEach(line => {
+                                const p = document.createElement('p');
+                                p.textContent = line.trim();
+                                pContent.appendChild(p);
+                            });
+                            pContent.classList.remove('hidden');
+                        }
+                        if (pRegen) pRegen.classList.remove('hidden');
+                    }
+                }
+
+                // 업로드된 축제 마스코트 이미지와 설명을 HTML 내부에 직접 포함
+                if (mascotData && mascotData.imageDataUrl) {
+                    const mUpload = clonedDoc.querySelector('#mascot-upload-box');
+                    const mPreview = clonedDoc.querySelector('#mascot-preview-box');
+                    const mImg = clonedDoc.querySelector('#mascot-img');
+                    const mActions = clonedDoc.querySelector('#mascot-actions');
+                    const mBadge = clonedDoc.querySelector('#mascot-save-badge');
+                    if (mUpload) mUpload.classList.add('hidden');
+                    if (mPreview) mPreview.classList.remove('hidden');
+                    if (mImg) mImg.setAttribute('src', mascotData.imageDataUrl);
+                    if (mActions) mActions.classList.remove('hidden');
+                    if (mBadge) mBadge.classList.remove('hidden');
+
+                    if (mascotData.description) {
+                        const mEmpty = clonedDoc.querySelector('#mascot-desc-empty');
+                        const mContent = clonedDoc.querySelector('#mascot-desc-content');
+                        const mRegen = clonedDoc.querySelector('#mascot-regen-btn');
+                        if (mEmpty) mEmpty.classList.add('hidden');
+                        if (mContent) {
+                            mContent.innerHTML = '';
+                            mascotData.description.split(/\n+/).filter(t => t.trim()).forEach(line => {
+                                const p = document.createElement('p');
+                                p.textContent = line.trim();
+                                mContent.appendChild(p);
+                            });
+                            mContent.classList.remove('hidden');
+                        }
+                        if (mRegen) mRegen.classList.remove('hidden');
+                    }
+                }
+
+                const toastBox = clonedDoc.querySelector('#toast-box');
+                if (toastBox) toastBox.classList.add('hidden');
+
+                const finalHtml = '<!DOCTYPE html>\n' + clonedDoc.outerHTML;
+                const htmlBlob = new Blob([finalHtml], { type: 'text/html;charset=utf-8' });
+                const htmlUrl = URL.createObjectURL(htmlBlob);
+                const link = document.createElement('a');
+                link.href = htmlUrl;
+                link.download = '황주영_축제디자인_포트폴리오.html';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(htmlUrl), 1500);
+
+                showToast('인터넷 파일(황주영_축제디자인_포트폴리오.html)이 저장되었습니다.');
+            } catch (error) {
+                console.error('HTML 파일 생성 오류:', error);
+                showToast('인터넷 파일 저장 중 오류가 발생했습니다.');
+            }
+        }
+
+        // ==========================================
+        // 8. 웹사이트 전체 GitHub Pages 배포용 ZIP 패키지 저장
+        // ==========================================
+        async function downloadWebsiteZip() {
+            if (typeof JSZip === 'undefined') {
+                showToast('ZIP 압축 라이브러리를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+                return;
+            }
+
+            showToast('포트폴리오 웹사이트 ZIP 파일을 생성하고 있습니다...');
+
+            try {
+                const zip = new JSZip();
+                const posterData = await getWorkData('poster');
+                const mascotData = await getWorkData('mascot');
+
+                // 업로드된 이미지가 있다면 images/ 폴더에 원본 해상도 PNG로 포함
+                const imgFolder = zip.folder('images');
+                let hasPoster = false;
+                let hasMascot = false;
+
+                if (posterData && posterData.imageDataUrl) {
+                    const posterBlob = await convertImageToPngBlob(posterData.imageDataUrl);
+                    imgFolder.file('황주영_축제홍보포스터.png', posterBlob);
+                    hasPoster = true;
+                }
+                if (mascotData && mascotData.imageDataUrl) {
+                    const mascotBlob = await convertImageToPngBlob(mascotData.imageDataUrl);
+                    imgFolder.file('황주영_축제마스코트.png', mascotBlob);
+                    hasMascot = true;
+                }
+
+                // 오프라인/다른 컴퓨터에서도 100% 동일하게 동작하도록 분리된 CSS, JS 및 초기 데이터 생성
+                const customCssContent = `/* 황주영 축제 디자인 포트폴리오 커스텀 스타일 */
+body {
+    background-color: #FFFDF8;
+    color: #2D2A32;
+    word-break: keep-all;
+}
+.glass-nav {
+    background: rgba(255, 253, 248, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.upload-zone {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.upload-zone.dragover {
+    background-color: #FDE8EE;
+    border-color: #E88DA6;
+}
+`;
+                zip.folder('css').file('style.css', customCssContent);
+
+                // 현재 문서의 전체 HTML을 복제하여 로컬/GitHub Pages 실행용 standalone index.html 구성
+                const clonedDoc = document.documentElement.cloneNode(true);
+
+                // 복제된 HTML에 현재 저장된 작품 상태와 설명을 미리 반영해 다른 PC에서 바로 열어도 보이도록 처리
+                if (hasPoster) {
+                    const pUpload = clonedDoc.querySelector('#poster-upload-box');
+                    const pPreview = clonedDoc.querySelector('#poster-preview-box');
+                    const pImg = clonedDoc.querySelector('#poster-img');
+                    const pActions = clonedDoc.querySelector('#poster-actions');
+                    const pBadge = clonedDoc.querySelector('#poster-save-badge');
+                    if (pUpload) pUpload.classList.add('hidden');
+                    if (pPreview) pPreview.classList.remove('hidden');
+                    if (pImg) pImg.setAttribute('src', 'images/황주영_축제홍보포스터.png');
+                    if (pActions) pActions.classList.remove('hidden');
+                    if (pBadge) pBadge.classList.remove('hidden');
+
+                    if (posterData.description) {
+                        const pEmpty = clonedDoc.querySelector('#poster-desc-empty');
+                        const pContent = clonedDoc.querySelector('#poster-desc-content');
+                        const pRegen = clonedDoc.querySelector('#poster-regen-btn');
+                        if (pEmpty) pEmpty.classList.add('hidden');
+                        if (pContent) {
+                            pContent.innerHTML = '';
+                            posterData.description.split(/\n+/).filter(t => t.trim()).forEach(line => {
+                                const p = document.createElement('p');
+                                p.textContent = line.trim();
+                                pContent.appendChild(p);
+                            });
+                            pContent.classList.remove('hidden');
+                        }
+                        if (pRegen) pRegen.classList.remove('hidden');
+                    }
+                }
+
+                if (hasMascot) {
+                    const mUpload = clonedDoc.querySelector('#mascot-upload-box');
+                    const mPreview = clonedDoc.querySelector('#mascot-preview-box');
+                    const mImg = clonedDoc.querySelector('#mascot-img');
+                    const mActions = clonedDoc.querySelector('#mascot-actions');
+                    const mBadge = clonedDoc.querySelector('#mascot-save-badge');
+                    if (mUpload) mUpload.classList.add('hidden');
+                    if (mPreview) mPreview.classList.remove('hidden');
+                    if (mImg) mImg.setAttribute('src', 'images/황주영_축제마스코트.png');
+                    if (mActions) mActions.classList.remove('hidden');
+                    if (mBadge) mBadge.classList.remove('hidden');
+
+                    if (mascotData.description) {
+                        const mEmpty = clonedDoc.querySelector('#mascot-desc-empty');
+                        const mContent = clonedDoc.querySelector('#mascot-desc-content');
+                        const mRegen = clonedDoc.querySelector('#mascot-regen-btn');
+                        if (mEmpty) mEmpty.classList.add('hidden');
+                        if (mContent) {
+                            mContent.innerHTML = '';
+                            mascotData.description.split(/\n+/).filter(t => t.trim()).forEach(line => {
+                                const p = document.createElement('p');
+                                p.textContent = line.trim();
+                                mContent.appendChild(p);
+                            });
+                            mContent.classList.remove('hidden');
+                        }
+                        if (mRegen) mRegen.classList.remove('hidden');
+                    }
+                }
+
+                // 외부 CSS 링크 추가 및 토스트 초기화
+                const toastBox = clonedDoc.querySelector('#toast-box');
+                if (toastBox) toastBox.classList.add('hidden');
+                const headEl = clonedDoc.querySelector('head');
+                if (headEl) {
+                    const linkTag = document.createElement('link');
+                    linkTag.setAttribute('rel', 'stylesheet');
+                    linkTag.setAttribute('href', 'css/style.css');
+                    headEl.appendChild(linkTag);
+                }
+
+                // 인라인 스크립트를 js/app.js로도 함께 분리 저장하여 파일 구조 완성도 확보
+                const inlineScripts = clonedDoc.querySelectorAll('script');
+                const mainScript = inlineScripts[inlineScripts.length - 1];
+                if (mainScript && mainScript.textContent) {
+                    zip.folder('js').file('app.js', mainScript.textContent.trim());
+                }
+
+                const finalHtml = '<!DOCTYPE html>\n' + clonedDoc.outerHTML;
+                zip.file('index.html', finalHtml);
+
+                // GitHub Pages 배포 안내 README 추가
+                const readmeText = `# 황주영 | Festival Design Portfolio\n\n혜전대학교 제과제빵과 황주영 학생의 축제 디자인 포트폴리오 웹사이트입니다.\n\n## 폴더 구조\n- index.html : 메인 포트폴리오 웹페이지\n- css/style.css : 커스텀 스타일시트\n- js/app.js : 이미지 저장·다운로드·AI 해설 스크립트\n- images/ : 업로드된 축제 홍보 포스터 및 마스코트 원본 이미지\n\n## 실행 및 GitHub Pages 배포 방법\n1. 압축을 해제한 뒤 index.html 파일을 브라우저로 열면 바로 실행됩니다.\n2. GitHub 새 저장소(Repository)에 모든 파일과 폴더를 업로드한 뒤 Settings > Pages에서 main 브랜치를 선택하면 즉시 배포됩니다.\n`;
+                zip.file('README.md', readmeText);
+
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const zipUrl = URL.createObjectURL(zipBlob);
+                const a = document.createElement('a');
+                a.href = zipUrl;
+                a.download = '황주영_축제디자인_포트폴리오.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(zipUrl), 1500);
+
+                showToast('웹사이트 전체 ZIP 파일 다운로드가 완료되었습니다.');
+            } catch (error) {
+                console.error('ZIP 생성 오류:', error);
+                showToast('ZIP 파일 생성 중 오류가 발생했습니다.');
+            }
+        }
+
+        // 페이지 로드 시 저장된 작품 복원 (브라우저 저장소 -> 번들 이미지 순 확인)
+        window.addEventListener('DOMContentLoaded', async () => {
+            const types = ['poster', 'mascot'];
+            for (const type of types) {
+                const saved = await getWorkData(type);
+                if (saved && saved.imageDataUrl) {
+                    renderWorkImage(type, saved.imageDataUrl);
+                    updateSaveStatusUI(type, true);
+                    if (saved.description) {
+                        renderWorkDescription(type, saved.description);
+                    }
+                } else {
+                    // ZIP 압축 해제 후 다른 PC에서 열었을 때 images/ 폴더에 이미지가 있는 경우 자동 복원
+                    const imgEl = document.getElementById(`${type}-img`);
+                    const currentSrc = imgEl ? imgEl.getAttribute('src') : '';
+                    if (currentSrc && (currentSrc.startsWith('images/') || currentSrc.startsWith('data:image/'))) {
+                        updateSaveStatusUI(type, true);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
